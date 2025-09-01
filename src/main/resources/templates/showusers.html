@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show users</title>
+</head>
+<body>
+<h1>Registered Users</h1>
+<table>
+    <tr th:if="${users.isEmpty()}">There are no users registered yet</tr>
+    <tr th:if="${!users.isEmpty()}">
+        <th>Name</th> <th>Email</th> <th>User Role</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.userRole}"></td>
+        <td><a th:href="@{/user/edit/{userId}(userId=${user.userId})}">Edit</a></td>
+    </tr>
+</table>
+
+<a th:href="@{/user/register}">Register a user</a>
+</body>
+</html>
