@@ -26,19 +26,5 @@ public class UserRepository {
         return user;
     }
 
-    public User findUserById(int userId) {
-        for(User user:users) {
-            if (user.getUserId() == userId) {
-                return user;
-            }
-        }
-        return null;
-    }
 
-    public User updateUser(User user) {
-        User savedUser = findUserById(user.getUserId());
-        users.remove(savedUser);
-        users.add(user);
-        return user;
-    }
 }

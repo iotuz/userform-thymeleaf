@@ -39,20 +39,4 @@ public class UserController {
         return "redirect:/user/users";
     }
 
-    @GetMapping("/edit/{userId}")
-    public String editUser(@PathVariable int userId, Model model){
-        User user = userService.getUserById(userId);
-        if(user==null){
-            throw new IllegalArgumentException("Invalid user id");
-        }
-        model.addAttribute("user", user);
-        model.addAttribute("userRoles", UserRole.values());
-        return "user-edit-form";
-    }
-
-    @PostMapping("/update")
-    public String editUser(@ModelAttribute User user){
-        User  updatedUser = userService.updateUser(user);
-        return "redirect:/user/users";
-    }
 }
